@@ -9,6 +9,9 @@ Aji is a hobby project to use in my own educational playgrounds for whatever sub
 * Gain experience building Docker Images
 * Explore techniques to avoid feature creep
 
+## How To Run
+Navigate to src/aji, run:
+> python aji.py
 
 ## How To Test
 In top level directory, run:
