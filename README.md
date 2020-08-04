@@ -1,5 +1,5 @@
 # Aji
-Aji is a japanese term used in the game Go that roughly means 'latent potential.'  It refers to a played stone's ability to open various avenues of play. Aji is a Python implementation of the game Go with the intent to be a modular engine to hook into any interface that you want to play in--web app, mobile app, REST API, CLI, hardware project, etc.  The engine will run and interface via REST API.  Until support is ready, a barebones interactive CLI mode will be the only way to play.
+Aji is a japanese term used in the game Go that roughly means 'latent potential.'  It refers to a played stone's ability to open various avenues of play. Aji is a Python implementation of the game Go with the intent to be a modular engine to hook into any interface that you want to play in--web app, mobile app, REST API, CLI, hardware project, etc.  The engine will run and interface via REST API.  Until support is ready, a barebones interactive CLI mode will be the only way to play.  The engine is based off of the  the SGFMill library, and implements the Computer Olympiad Ruleset.
 
 Aji is a hobby project to use in my own educational playgrounds for whatever subfields of software design are catching my interest.
 
