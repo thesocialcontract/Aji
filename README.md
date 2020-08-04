@@ -9,11 +9,19 @@ Aji is a hobby project to use in my own educational playgrounds for whatever sub
 * Gain experience building Docker Images
 * Explore techniques to avoid feature creep
 
-## How To Run
-Navigate to src/aji, run:
-> python aji.py
+## To Install
+Clone in the directory of your choice. Install pipenv:
+> pip install pipenv
 
-## How To Test
+Navigate to the top level and run:
+> pipenv install -r requirements.txt
+
+[Article](https://docs.python-guide.org/dev/virtualenvs/) used for reference.
+
+## To Run
+> pipenv run src/aji/aji.py
+
+## To Test
 In top level directory, run:
 > python -m unittest discover -s tests
 
