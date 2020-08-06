@@ -3,16 +3,16 @@ import unittest
 from sgfmill import sgf
 
 from app import aji
-from tests.fixtures import constants
+from tests.fixtures import utils
 
 class TestSGF(unittest.TestCase):
 
     def test_sgf_read(self):
-        # Arrange
-        test_input = constants.test_input_filepath + "simple-place.sgf"
-        with open(test_input, "rb") as f:
-            game = sgf.Sgf_game.from_bytes(f.read())
-        # If no crash, then test succeeds
+        # Arrange/Act/Assert
+        # If no crash, test succeeds.
+        test_input = "simple-place.sgf"
+        test_sgf = utils.load_input_sgf(test_input)
+        
 
 if __name__ == '__main__':
     unittest.main()

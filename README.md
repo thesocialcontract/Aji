@@ -1,5 +1,5 @@
 # Aji
-Aji is a japanese term used in the game Go that roughly means 'latent potential.'  It refers to a played stone's ability to open various avenues of play. Aji is a Python implementation of the game Go with the intent to be a modular engine to hook into any interface that you want to play in--web app, mobile app, REST API, CLI, hardware project, etc.  The engine will run and interface via REST API.  Until support is ready, a barebones interactive CLI mode will be the only way to play.
+Aji is a japanese term used in the game Go that roughly means 'latent potential.'  It refers to a played stone's ability to open various avenues of play. Aji is a Python implementation of the game Go with the intent to be a modular engine to hook into any interface that you want to play in--web app, mobile app, REST API, CLI, hardware project, etc.  The engine will run and interface via REST API.  Until support is ready, a barebones interactive CLI mode will be the only way to play.  The engine is based off of the  the SGFMill library, and implements the Computer Olympiad Ruleset.
 
 Aji is a hobby project to use in my own educational playgrounds for whatever subfields of software design are catching my interest.
 
@@ -47,7 +47,7 @@ Specific features:
 > * **Life and death settled by:** Game resumption
 > * **Illegal move:** Is regarded as a pass 
 
-# Long Cycle Rule
+## Long Cycle Rule
 A board position is defined by the colouring of the grid’s intersections directly after play and any consequent removals.
 
 If a play recreates a previous board position then exceptionally and immediately the game ends and is scored, based on an analysis of all moves played since the moment just after the first occurrence until the moment just after the last occurrence, as follows:
@@ -56,7 +56,7 @@ If a play recreates a previous board position then exceptionally and immediately
 
 2. If between the two occurrences the difference in number of captured black and white stones is zero, then the game ends as a draw. 
 
-# Ending the game
+## Ending the game
 1.  A game is played until both parties agree that it is finished.
 2.  During  the  game,  if  one  player  resigns,  the  game is finished. 
 3.  If both players pass one after the other, the game is finished.
@@ -64,3 +64,6 @@ If a play recreates a previous board position then exceptionally and immediately
 ## Living stones and dead stones
 1. When the game is finished, by agreement of both parties, all un-removable stones are living stones.
 2. When the game is finished, by agreement of both parties, all removable stones are dead stones.
+
+# Libraries Used
+[SGFMill](https://mjw.woodcraft.me.uk/sgfmill/doc/1.1.1/intro.html)
