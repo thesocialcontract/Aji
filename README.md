@@ -47,7 +47,7 @@ Specific features:
 > * **Life and death settled by:** Game resumption
 > * **Illegal move:** Is regarded as a pass 
 
-# Long Cycle Rule
+## Long Cycle Rule
 A board position is defined by the colouring of the grid’s intersections directly after play and any consequent removals.
 
 If a play recreates a previous board position then exceptionally and immediately the game ends and is scored, based on an analysis of all moves played since the moment just after the first occurrence until the moment just after the last occurrence, as follows:
@@ -56,7 +56,7 @@ If a play recreates a previous board position then exceptionally and immediately
 
 2. If between the two occurrences the difference in number of captured black and white stones is zero, then the game ends as a draw. 
 
-# Ending the game
+## Ending the game
 1.  A game is played until both parties agree that it is finished.
 2.  During  the  game,  if  one  player  resigns,  the  game is finished. 
 3.  If both players pass one after the other, the game is finished.
@@ -64,3 +64,6 @@ If a play recreates a previous board position then exceptionally and immediately
 ## Living stones and dead stones
 1. When the game is finished, by agreement of both parties, all un-removable stones are living stones.
 2. When the game is finished, by agreement of both parties, all removable stones are dead stones.
+
+# Libraries Used
+[SGFMill](https://mjw.woodcraft.me.uk/sgfmill/doc/1.1.1/intro.html)
