@@ -1,5 +1,6 @@
 from sgfmill import boards
 from sgfmill import common
+from sgfmill import ascii_boards
 
 class Game:
     def __init__(self, size=19):
@@ -17,7 +18,7 @@ class Game:
             self.current_player = self.black
 
     def place(self, x, y):
-        self.board.play(x, y, self.black)
+        self.board.play(x, y, self.current_player)
         self._switch_player()
         pass
 
@@ -26,3 +27,10 @@ class Game:
 
     def end_and_report(self):
         return self.board.area_score() - self.komi
+
+    def __str__(self):
+        result = ascii_boards.render_board(self.board)
+        player = "Black" if self.current_player == 'b' else "White"
+        result += "\n"
+        result += f"Current Player: {player}"
+        return result
