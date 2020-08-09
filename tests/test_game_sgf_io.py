@@ -16,32 +16,28 @@ class TestGameSgfIo(unittest.TestCase):
         self.go = aji.start_new_game()
 
     def test_load_empty(self):
-        # Arrange
-        input_filepath = constants.test_input_filepath + "empty.sgf"
+        # Arrange / Act (utils.load_aji calls game_sgf_io.build_game_from_sgf)
+        loaded_go = utils.load_aji('input', 'empty')
+        fresh_go = self.go
 
-        # Act
-        test_go = game_sgf_io.build_game_from_sgf(input_filepath)
+        self.assertEqual(self.go._current_player, loaded_go._current_player)
+        self.assertEqual(self.go.size, loaded_go.size)
 
-        self.assertEqual(self.go.current_player, test_go.current_player)
-        self.assertEqual(self.go.size, test_go.size)
-        # SGF Boards compare object references instead of values in board.
-        #self.assertEqual(self.go.board, test_go.board)
-        self.assertTrue(test_go.board.is_empty())
+        are_boards_equal = fresh_go._boards_equal(loaded_go._board)
+        self.assertTrue(are_boards_equal)
+        self.assertTrue(fresh_go._board.is_empty())
 
     def test_load_1_good_move(self):
-        # Arrange
-        input_filepath = constants.test_input_filepath + "one-good.sgf"
-
-        # Act
-        test_go = game_sgf_io.build_game_from_sgf(input_filepath)
+        # Arrange / Act
+        # utils.load_aji will call game_sgf_io.build_game_from_sgf
+        # which is what we're testing.
+        loaded_go = utils.load_aji('input', 'one-good')
+        generated_go = self.go
+        generated_go.place(constants.top_dot_row, constants.left_dot_col)
 
         # Assert
-        self.assertEqual(self.go.current_player, test_go.current_player)
-        self.assertEqual(self.go.size, test_go.size)
-        # START HERE
-        # TODO: Find an elegant way to verify board equality.
-        # You're not really going to need it in any other place except
-        # in test classes, and in checking old board states.
+        are_boards_equal = generated_go._boards_equal(loaded_go._board)
+        self.assertTrue(are_boards_equal)
 
 if __name__ == '__main__':
     unittest.main()
