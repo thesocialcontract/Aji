@@ -33,7 +33,7 @@ class TestGameSgfIo(unittest.TestCase):
         # which is what we're testing.
         loaded_go = utils.load_aji('input', 'one-good')
         generated_go = self.go
-        generated_go.place(constants.top_dot_row, constants.left_dot_col)
+        generated_go.place(constants.TOP_DOT_ROW, constants.LEFT_DOT_COL)
 
         # Assert
         are_boards_equal = generated_go._boards_equal(loaded_go._board)

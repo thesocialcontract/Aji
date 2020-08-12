@@ -2,7 +2,8 @@ test_expected_filepath = "tests/fixtures/expected/"
 test_input_filepath = "tests/fixtures/input/"
 
 # Based on 19x19 grid
-top_dot_row  = 15
-right_dot_col = 15
-left_dot_col = 3
-bot_dot_row = 3
+TOP_DOT_ROW  = 15
+RIGHT_DOT_COL = 15
+LEFT_DOT_COL = 3
+BOT_DOT_ROW = 3
+MID = 9

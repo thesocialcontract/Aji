@@ -19,10 +19,10 @@ class TestGameEquality(unittest.TestCase):
         # Arrange
         loaded = utils.load_aji('input', 'equality-1')
         generated = self.go
-        generated.place(constants.top_dot_row,  constants.left_dot_col)  # B
-        generated.place(constants.top_dot_row,  constants.right_dot_col) # W
-        generated.place(9, constants.left_dot_col) # B
-        generated.place(9, constants.right_dot_col) # W
+        generated.place(constants.TOP_DOT_ROW,  constants.LEFT_DOT_COL)  # B
+        generated.place(constants.TOP_DOT_ROW,  constants.RIGHT_DOT_COL) # W
+        generated.place(constants.MID, constants.LEFT_DOT_COL) # B
+        generated.place(constants.MID, constants.RIGHT_DOT_COL) # W
         
         # Act / Assert
         is_board_equal = generated._boards_equal(loaded._board) 

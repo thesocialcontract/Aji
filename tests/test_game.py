@@ -62,16 +62,7 @@ class TestGame(unittest.TestCase):
         # Act / Assert
         with self.assertRaises(ValueError):
             self.go.place(0,0)
-    
-    def test_game_players_place_many(self):
-        # Arrange / Act
-        # TODO: place a bunch
-        # Assert
-        # TODO: Load expected sgf
-        # TODO: Make expected sgf
-        # TODO: Assert board == expected
-        pass
-
+            
     def test_game_can_end(self):
         self.go.end_and_report() # Arrange/Act/Assert
 
@@ -103,25 +94,6 @@ class TestGame(unittest.TestCase):
         # Assert
         expected = 13
         #self.assertEqual(result, expected)
-
-    def test_game_score_white_wins(self):
-        pass
-
-    def test_game_score_with_captured(self):
-        pass
-    
-    def test_game_ascii_display(self):
-        """ Function for manual validation.
-        """
-        # Arrange
-        # self.go.place(0,0)
-        # self.go.place(0,1)
-        # print(self.go.get(0,0))
-        # print(self.go.get(0,1))
-        
-        # # Act / Assert
-        # print(self.go)
-        self.assertTrue(True)
 
 if __name__ == '__main__':
     unittest.main()
