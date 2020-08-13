@@ -2,7 +2,6 @@ import unittest
 
 from sgfmill import sgf
 
-from app import aji
 from app import game
 from app import game_sgf_io
 from tests.fixtures import utils
@@ -13,7 +12,7 @@ class TestGameEquality(unittest.TestCase):
     """
     
     def setUp(self):
-        self.go = aji.start_new_game()
+        self.go = game.Game(19)
 
     def test_compare_loaded_generated_equal(self):
         # Arrange
@@ -31,7 +30,7 @@ class TestGameEquality(unittest.TestCase):
     def test_generate_boards_equal_many_moves(self):
         # Arrange
         go1 = self.go
-        go2 = aji.start_new_game()
+        go2 = game.Game(19)
         go1.place(0, 0)
         go1.place(0, 1)
         go2.place(0, 0)
@@ -44,7 +43,7 @@ class TestGameEquality(unittest.TestCase):
     def test_generate_boards_inequal(self):
         # Arrange
         go1 = self.go
-        go2 = aji.start_new_game()
+        go2 = game.Game(19)
         go1.place(0, 0)
         go2.place(0, 1)
 

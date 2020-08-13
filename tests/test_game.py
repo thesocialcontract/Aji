@@ -2,14 +2,13 @@ import unittest
 
 from sgfmill import sgf
 
-from app import aji
 from app import game
 from tests.fixtures import utils
 
 class TestGame(unittest.TestCase):
 
     def setUp(self):
-        self.go = aji.start_new_game()
+        self.go = game.Game(19)
         pass
 
     def test_game_starts(self):

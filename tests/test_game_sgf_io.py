@@ -13,7 +13,7 @@ class TestGameSgfIo(unittest.TestCase):
     """
     
     def setUp(self):
-        self.go = aji.start_new_game()
+        self.go = game.Game(19)
 
     def test_load_empty(self):
         # Arrange / Act (utils.load_aji calls game_sgf_io.build_game_from_sgf)
