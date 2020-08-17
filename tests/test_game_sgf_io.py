@@ -2,7 +2,6 @@ import unittest
 
 from sgfmill import sgf
 
-from app import aji
 from app import game
 from app import game_sgf_io
 from tests.fixtures import utils
@@ -38,6 +37,47 @@ class TestGameSgfIo(unittest.TestCase):
         # Assert
         are_boards_equal = generated_go._boards_equal(loaded_go._board)
         self.assertTrue(are_boards_equal)
+
+    def test_save_empty(self):
+        # Arrange
+        generated_sgf = self.go._sgf
+        save_file = constants.test_results_filepath + "save-empty.sgf"
+
+        # Act / Assert (Passes if no exception)
+        game_sgf_io.save_sgf(generated_sgf, save_file)
+
+        # To think about: io doesn't matter in somethign this small
+        #        but will io slow testing when the codebase is large?
+
+    def test_save_1_good_move(self):
+        # Arrange
+        generated_game = self.go
+
+        # Act
+        generated_game.place(0,0)
+        generated_sgf = generated_game._sgf
+        save_file = constants.test_results_filepath + "save-1-good.sgf"
+        game_sgf_io.save_sgf(generated_sgf, save_file)
+
+        # Assert
+        expected = constants.SIMPLE_SGF
+        result = game_sgf_io.sgf_to_str(generated_sgf)
+        self.assertEqual(result, expected)
+
+    def test_save_fails_invalid_path(self):
+        # Arrange
+        generated_sgf = self.go._sgf
+        save_file = "/asdf/f///faaw/ef/awe//save-empty.sgf"
+
+        # Act / Assert
+        with self.assertRaises(Exception):
+            game_sgf_io.save_sgf(generated_sgf, save_file)
+
+    def test_save_full_game(self):
+        pass
+
+    def test_saved_loads_same(self):
+        pass
 
 if __name__ == '__main__':
     unittest.main()

@@ -8,11 +8,11 @@ class Game:
         if sgf_game is not None:
             self._load_sgf(sgf_game)
         else:
+            self._sgf = sgf.Sgf_game(size)
             self._current_player = 'b'
             self.komi = 8
             self.size = size
             self._board = boards.Board(size)
-
 
     def _load_sgf(self, sgf_game):
         self._sgf = sgf_game

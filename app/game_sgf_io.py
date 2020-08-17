@@ -8,3 +8,12 @@ def build_game_from_sgf(filename):
 
     go = game.Game(sgf_game=sgf_data)
     return go
+
+def sgf_to_str(sgf_game):
+    sgf_bytes = sgf_game.serialise()
+    return sgf_bytes.decode('utf-8')
+
+def save_sgf(sgf_game, filename):    
+    content = sgf_to_str(sgf_game)
+    with open(filename, 'w') as f:
+        f.write(content)

@@ -4,7 +4,8 @@ from tests.fixtures import constants
 
 _fixture_filepaths = {
     "input": constants.test_input_filepath,
-    "expected": constants.test_expected_filepath
+    "expected": constants.test_expected_filepath,
+    "result": constants.test_results_filepath
 }
 
 def report_games(game_loaded, game_generated):
@@ -18,12 +19,6 @@ def report_games(game_loaded, game_generated):
     print("------------------------------------------------")
     print("GENERATED")
     print(game_generated)
-
-def load_input_sgf(test_file):
-    """ Basic load input.  Do not use"""
-    filename = constants.test_input_filepath + test_file
-    with open(filename, "r") as f:
-        return sgf.Sgf_game.from_string(f.read())
 
 def load_aji(fixture_type, test_file):
     """ Builds aji game from game_sgf_io util and test fixture constants. 
