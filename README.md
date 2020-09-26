@@ -3,15 +3,30 @@ Aji is a japanese term used in the game Go that roughly means 'latent potential.
 
 Aji is a hobby project to use in my own educational playgrounds for whatever subfields of software design are catching my interest.
 
-## Educational Goals
+## Exploratory Educational Goals
 * Embrace Test Driven Development
 * Explore Jira as a project management tool
 * Gain experience building Docker Images
 * Explore techniques to avoid feature creep
 
+## Concrete Goals
+* Play Go from the command line with hotseat multiplayer
+* Play Go from the command line against an AI that makes random moves
+* Play Go running from a Docker image
+* Use unit tests to verify functional correctness whenver possible (rather than running the entire program.)
+* Split development effort into Jira cards.  No work is done without a Jira.
+
+## Purpose of Goals
+* Specific goals to make a functional program help keep me on target.
+* Test Driven Development is difficult, and not often practiced without a mandate from on high or a team that already buys into it.  In my anecdotal experience and the experience of otehrs, Universities don't really teach you what makes a good test or TDD.  "Tests are good and you should write them."  But how?  Why?  When?  Writing tests take effort, and they're easy to screw up.  Without an external force pushing you to write tests, developers take the path of least resistance and often won't.  I want to understand what makes TDD worth the effort. What makes it difficult? What sorts of mistakes do you often make in TDD? How do you resolve those?  How TDD shapes your design?  What benefits do you get from TDD, and what drawbacks are there?  Is TDD worth the effort or is it industry hype?
+* Jira cards are *way* more cumbersome than this project needs.  However, speed is not the purpose of this project, education is.  Making jiras myself accomplishes two things. (1) They force me to be deliberate.  Jiras split the project into discrete goals and keeps me from getting distracted by shiny new features or fixes that aren't relevant to my overall goal, and (2) screwing up cards (descriptions, scope, etc.) will inform me of what sorts of Jiras are actually helpful for a developer.
+
 ## To Install
 Clone in the directory of your choice. Install pipenv:
 > pip install pipenv
+
+Optional: Activate a virtual environment to isolate dependencies from your system.  Navigate to the top level and run:
+> pipenv shell
 
 Navigate to the top level and run:
 > pipenv install -r requirements.txt
@@ -26,7 +41,7 @@ In top level directory, run:
 > python -m unittest discover -s tests
 
 ## Go Rules
-The rules of Go are simple.  Formalizing them is less so.  For the sake of implementation, Aji will use the *[Computer Olympiad](https://en.wikipedia.org/wiki/Computer_Olympiad)* Ruleset.  A soft goal is to to build to an interface that permits easily choosing between other rulesets and scoring methods.
+The rules of Go are simple.  Formalizing them is less so.  For the sake of implementation, Aji will use the *[Computer Olympiad](https://en.wikipedia.org/wiki/Computer_Olympiad)* Ruleset.  A soft goal is to build to an interface that permits easily choosing between other rulesets and scoring methods.
 
 ### Chinese Rules
 - Scoring: Area

@@ -1,2 +1,0 @@
-"""Testing 3rd party libraries is *NOT* best practice!
-Test files here are for educational purposes to get practice with test creation, and to play with 3rd party libraries outside of the application context."""
