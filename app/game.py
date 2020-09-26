@@ -4,6 +4,10 @@ from sgfmill import common
 from sgfmill import ascii_boards
 
 class Game:
+    """
+        Game handles gamestate logic for Go.  It has a board, a set of rules to play, 
+        and an SGF tree keeping track of game state.
+    """
     def __init__(self, size=19, sgf_game=None):
         if sgf_game is not None:
             self._load_sgf(sgf_game)
@@ -20,9 +24,19 @@ class Game:
         self.komi = sgf_game.get_komi()
         self._board = boards.Board(self.size)
 
+        # HACK: This is extremely coupled with SGFMill.  Don't like.
+        # NOTE: Consider moving SGF operations to an SGF Mediator
+        last_node = sgf_game.get_last_node()
+        last_player = last_node.get_move()[0]
+        if last_player:
+            self._current_player = last_player
+            self._switch_player()
+        else:
+            self._current_player = 'b'  # Default to black
+
         # Load Moves
         moves = sgf_game.get_main_sequence()
-        if len(moves) == 1: # We're empty, no nodes to run
+        if len(moves) == 1: # We're empty, no nodes to run.  Why 1?
             self._current_player = 'b'
             return
 
@@ -33,11 +47,11 @@ class Game:
             move = node.get_move()
             if not move:
                 continue
-            x = move[1][0]
-            y = move[1][1]
+            x = move[1][0] # ( color, (x,y) ) -> (x,y) -> (x)
+            y = move[1][1] # ( color, (x,y) ) -> (x,y) -> (y)
             color = move[0]
-            self.place(x,y) # TODO: Allow for inital placements?
-
+            self._board.play( x, y, color )
+        
     def _boards_equal(self, board):
         """ Deep equality check to see if boards are the same.
         """
@@ -54,10 +68,22 @@ class Game:
         else:
             self._current_player = black
 
-    def place(self, x, y):
-        self._board.play(x, y, self._current_player)
+    def place(self, row, col):
+        """ 
+            Place the current player's stone at the given location.
+            TODO: Consider adding player to authenticate player placement.
+            TODO: Add invalid placement errors.
+            TODOs never get completed unless marked in planning space.
+            
+        """
+        # Place
+        self._board.play( row, col, self._current_player )
+
+        # Record in SGF.  SGF Tree is mutable.
+        next_node = self._sgf.extend_main_sequence()
+        next_node.set_move( self._current_player, (row, col) )
+
         self._switch_player()
-        pass
 
     def get(self, x, y):
         return self._board.get(x, y)

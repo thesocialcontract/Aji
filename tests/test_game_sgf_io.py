@@ -54,15 +54,41 @@ class TestGameSgfIo(unittest.TestCase):
         generated_game = self.go
 
         # Act
-        generated_game.place(0,0)
+        generated_game.place(18,0)
         generated_sgf = generated_game._sgf
         save_file = constants.test_results_filepath + "save-1-good.sgf"
         game_sgf_io.save_sgf(generated_sgf, save_file)
 
         # Assert
-        expected = constants.SIMPLE_SGF
+        expected = constants.SIMPLE_SGF # NOTE: Constant Fixture shouldn't be used unless you *know* that it'll be used elsewhere.  Otherwise it makes test values less obvious.
         result = game_sgf_io.sgf_to_str(generated_sgf)
+        result = result.replace("\n", "")
         self.assertEqual(result, expected)
+        self.assertEqual(self.go._current_player, "w")
+
+    def test_save_5_good_moves(self):
+        # Arrange
+        generated_game = self.go
+
+        # Act
+        generated_game.place(18,0)
+        generated_game.place(17,0)
+        generated_game.place(16,0)
+        generated_game.place(15,0)
+        generated_game.place(14,0)
+        generated_sgf = generated_game._sgf
+        save_file = constants.test_results_filepath + "save-1-good.sgf"
+        game_sgf_io.save_sgf(generated_sgf, save_file)
+
+        # Assert
+        loaded_go = utils.load_aji('expected', 'five_good_moves')
+        expected_sgf = loaded_go._sgf
+        expected = game_sgf_io.sgf_to_str(expected_sgf)
+        expected = expected.replace("\n", "")
+        result   = game_sgf_io.sgf_to_str(generated_sgf)
+        result   = result.replace("\n", "")
+        self.assertEqual(result, expected)
+        self.assertEqual(self.go._current_player, "w")
 
     def test_save_fails_invalid_path(self):
         # Arrange

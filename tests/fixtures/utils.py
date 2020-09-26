@@ -8,6 +8,7 @@ _fixture_filepaths = {
     "result": constants.test_results_filepath
 }
 
+
 def report_games(game_loaded, game_generated):
     """ For debugging in tests.
     e.g. making sure generated tests are what you're expecting
@@ -26,6 +27,5 @@ def load_aji(fixture_type, test_file):
     if fixture_type not in _fixture_filepaths:
         raise ValueError("Invliad Test Fixture Type")
 
-    filename = constants.test_input_filepath + test_file + ".sgf"
-    with open(filename, "r") as f:
-        return game_sgf_io.build_game_from_sgf(filename)
+    filename = _fixture_filepaths[fixture_type] + test_file + ".sgf"
+    return game_sgf_io.build_game_from_sgf(filename)
