@@ -92,8 +92,8 @@ class Game:
         return self._board.area_score() - self.komi
 
     def __str__(self):
-        result = ascii_boards.render_board(self._board)
         player = "Black" if self._current_player == 'b' else "White"
-        result += "\n"
+        board = ascii_boards.render_board(self._board)
+        result  = f"{board}\n"
         result += f"Current Player: {player}"
         return result

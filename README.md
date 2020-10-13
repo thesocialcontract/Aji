@@ -23,22 +23,22 @@ Aji is a hobby project to use in my own educational playgrounds for whatever sub
 
 ## To Install
 Clone in the directory of your choice. Install pipenv:
-> pip install pipenv
+`pip install pipenv`
 
 Optional: Activate a virtual environment to isolate dependencies from your system.  Navigate to the top level and run:
-> pipenv shell
+`pipenv shell`
 
 Navigate to the top level and run:
-> pipenv install -r requirements.txt
+`pipenv install -r requirements.txt`
 
 [Article](https://docs.python-guide.org/dev/virtualenvs/) used for reference.
 
 ## To Run
-> pipenv run src/aji/aji.py
+`pipenv run src/aji/aji.py`
 
 ## To Test
-In top level directory, run:
-> python -m unittest discover -s tests
+In top level directory, run 
+`python -m unittest discover -s tests`
 
 ## Go Rules
 The rules of Go are simple.  Formalizing them is less so.  For the sake of implementation, Aji will use the *[Computer Olympiad](https://en.wikipedia.org/wiki/Computer_Olympiad)* Ruleset.  A soft goal is to build to an interface that permits easily choosing between other rulesets and scoring methods.
